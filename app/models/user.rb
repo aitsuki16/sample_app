@@ -1,5 +1,5 @@
 class User < ApplicationRecord
-<<<<<<< HEAD
+
     # Ensure email is saved as lowercase before saving
     before_save { self.email = email.downcase }
   
@@ -19,7 +19,6 @@ class User < ApplicationRecord
     validates :password, presence: true, length: { minimum: 6 }
 
   end
-=======
     before_save { self.email = email.downcase }
     validates :name, presence: true, length: { maximum: 50 }
     VALID_EMAIL_REGEX = /\A[\w+\-.]+@[a-z\d\-.]+\.[a-z]+\z/i
@@ -28,4 +27,3 @@ class User < ApplicationRecord
                       uniqueness: true
   end
   
->>>>>>> 7c94add46e24214f2b8f82a2ed4d15b25b52f5f4

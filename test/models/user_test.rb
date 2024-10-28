@@ -1,7 +1,7 @@
 require "test_helper"
 
 class UserTest < ActiveSupport::TestCase
-<<<<<<< HEAD
+
   def setup
     @user = User.new(
       name: "Example User", 
@@ -33,8 +33,7 @@ class UserTest < ActiveSupport::TestCase
     @user.password = @user.password_confirmation = "a" * 5
     assert_not @user.valid?
   end
-=======
-
+  
   def setup
     @user = User.new(name: "Example User", email: "user@example.com")
   end
@@ -45,5 +44,4 @@ class UserTest < ActiveSupport::TestCase
     @user.save
     assert_not duplicate_user.valid?
   end
->>>>>>> 7c94add46e24214f2b8f82a2ed4d15b25b52f5f4
 end
