@@ -5,6 +5,7 @@ class UsersController < ApplicationController
 
   def new
     @user = User.new  # Create a new user instance for the signup form
+   
     Rails.logger.debug("Params: #{params.inspect}") 
   end
   
@@ -38,6 +39,6 @@ class UsersController < ApplicationController
 
     def user_params
       params.require(:user).permit(:name, :email, :password,
-                                   :password_confirmation)
+      :password_confirmation)
     end
 end
