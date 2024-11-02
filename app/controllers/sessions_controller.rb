@@ -12,11 +12,13 @@ class SessionsController < ApplicationController
     else
       flash.now[:danger] = 'Invalid email/password combination' 
       # Create an error message.
-      
+
       render 'new', status: :unprocessable_entity
     end # This 'end' closes the 'if' statement
   end
 
   def destroy
+    log_out
+    redirect_to root_url, status: :see_other
   end
 end

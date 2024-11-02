@@ -1,4 +1,3 @@
-/// Menu manipulation
 
 // Adds a toggle listener.
 function addToggleListener(selected_id, menu_id, toggle_class) {
