@@ -1,9 +1,9 @@
-
 module SessionsHelper
 
-    # Logs in the given user.
+    # Logs in the given user and sets a session token for security.
     def log_in(user)
       session[:user_id] = user.id
+      session[:session_token] = user.session_token  # Guard against session replay attacks
     end
   
     # Remembers a user in a persistent session.
@@ -13,10 +13,13 @@ module SessionsHelper
       cookies.permanent[:remember_token] = user.remember_token
     end
   
-    # Returns the user corresponding to the remember token cookie.
+    # Returns the user corresponding to the session or remember token cookie.
     def current_user
       if (user_id = session[:user_id])
-        @current_user ||= User.find_by(id: user_id)
+        user = User.find_by(id: user_id)
+        if user && session[:session_token] == user.session_token  # Using session_token for verification
+          @current_user = user
+        end
       elsif (user_id = cookies.encrypted[:user_id])
         user = User.find_by(id: user_id)
         if user && user.authenticated?(cookies[:remember_token])
@@ -40,8 +43,9 @@ module SessionsHelper
   
     # Logs out the current user.
     def log_out
-        reset_session
-        @current_user = nil
-      end
+      forget(current_user)
+      reset_session
+      @current_user = nil
+    end
   
   end
