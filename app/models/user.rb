@@ -1,4 +1,5 @@
 class User < ApplicationRecord
+  
   # Accessible attribute for remember token
   attr_accessor :remember_token
 
