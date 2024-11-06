@@ -57,7 +57,6 @@ p {
   line-height: 1.7em;
 }
 
-
 /* header */
 
 #logo {
@@ -134,14 +133,40 @@ aside {
   }
 }
 
-.gravatar {
-  float: left;
-  margin-right: 10px;
+/* gravatar styling for users list */
+.users {
+  display: flex;
+  flex-direction: column; /* Stack users vertically */
+  gap: 15px; /* Space between users */
+  list-style: none; /* Remove bullet points */
+  margin: 0;
+  padding: 0;
 }
 
-.gravatar_edit {
-  margin-top: 15px;
+.users li {
+  display: flex;
+  align-items: center; /* Align gravatar and name vertically centered */
+  padding: 10px 0;
+  border-bottom: 1px solid $gray-medium-light; /* Divider between users */
 }
+
+.gravatar {
+  width: 50px; /* Set fixed width to match image */
+  height: 50px;
+  margin-right: 10px; /* Space between image and username */
+}
+
+.gravatar img {
+  width: 100%; /* Ensure the image fills the container */
+  height: auto;
+  border-radius: 50%; /* Optional: make the image circular */
+}
+
+.user-name {
+  font-size: 1em;
+  color: #333; /* Customize as needed */
+}
+
 input, textarea, select, .uneditable-input {
   border: 1px solid #bbb;
   width: 100%;
@@ -176,7 +201,7 @@ input {
 }
 
 .checkbox {
-  margin-top: -10px;
+  margin-top: 10px;
   margin-bottom: 10px;
   span {
     margin-left: 20px;

@@ -16,5 +16,7 @@ Rails.application.routes.draw do
   # User resource routes (new, create, show)
   resources :users, only: [:new, :create, :show]
 
+  resources :users
+
 end
 
