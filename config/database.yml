@@ -28,7 +28,11 @@ test:
   #password: <%= ENV['SAMPLE_APP_DATABASE_PASSWORD'] %>
 
 
+  # production:
+  # adapter: postgresql
+  # encoding: unicode
+  # pool: 5
+
   production:
-  adapter: postgresql
-  encoding: unicode
-  pool: 5
+  <<: *default
+  url: <%= ENV['DATABASE_URL'] %>
