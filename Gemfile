@@ -19,10 +19,11 @@ gem "bootstrap-sass",  "3.4.1"
 gem "faker",           "2.21.0"
 gem "will_paginate",           "3.3.1"
 gem "bootstrap-will_paginate", "1.0.0"
-
+gem 'pg', group: :production
+gem 'sqlite3', group: [:development, :test]
 
 # Use sqlite3 as the database for Active Record
-gem "sqlite3", "~> 1.4"
+# gem "sqlite3", "~> 1.4"
 
 # Use the Puma web server [https://github.com/puma/puma]
 gem "puma", "~> 5.0"

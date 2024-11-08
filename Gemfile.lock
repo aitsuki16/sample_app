@@ -162,6 +162,7 @@ GEM
     nokogiri (1.16.7-x86_64-linux)
       racc (~> 1.4)
     ostruct (0.6.0)
+    pg (1.5.9)
     psych (5.1.2)
       stringio
     public_suffix (6.0.1)
@@ -278,11 +279,12 @@ DEPENDENCIES
   logger
   mutex_m
   ostruct
+  pg
   puma (~> 5.0)
   rails (~> 7.0.4)
   selenium-webdriver
   sprockets-rails
-  sqlite3 (~> 1.4)
+  sqlite3
   stimulus-rails
   turbo-rails
   tzinfo-data
