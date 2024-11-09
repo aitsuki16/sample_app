@@ -279,12 +279,12 @@ DEPENDENCIES
   logger
   mutex_m
   ostruct
-  pg
+  pg (~> 1.5)
   puma (~> 5.0)
   rails (~> 7.0.4)
   selenium-webdriver
   sprockets-rails
-  sqlite3
+  sqlite3 (~> 1.4)
   stimulus-rails
   turbo-rails
   tzinfo-data

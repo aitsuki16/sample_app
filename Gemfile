@@ -20,8 +20,13 @@ gem "faker",           "2.21.0"
 gem "will_paginate",           "3.3.1"
 gem "bootstrap-will_paginate", "1.0.0"
 # gem 'pg', group: :production
-gem 'pg'
-gem 'sqlite3', group: [:development, :test]
+group :development, :test do
+  gem 'sqlite3', '~> 1.4'
+end
+
+group :production do
+  gem 'pg', '~> 1.5'
+end
 
 # Use sqlite3 as the database for Active Record
 # gem "sqlite3", "~> 1.4"
