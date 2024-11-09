@@ -13,13 +13,11 @@ Rails.application.routes.draw do
   get    "/login",   to: "sessions#new"
   post   "/login",   to: "sessions#create"
   delete "/logout",  to: "sessions#destroy"
+
   # User resource routes (new, create, show)
   resources :users, only: [:new, :create, :show]
-
   resources :users
-
+  
   resources :account_activations, only: [:edit]
-
-
 end
 
