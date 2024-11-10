@@ -9,7 +9,7 @@ class UserMailerTest < ActionMailer::TestCase
     # Test email details
     assert_equal "Account activation", mail.subject
     assert_equal [user.email], mail.to
-    assert_equal ["igaaida16@gmail.com"], mail.from # Update to your actual 'from' address 
+    assert_equal ["aidaiga16@gmail.com"], mail.from # Update to your actual 'from' address 
     assert_match user.name, mail.body.encoded
     assert_match user.activation_token, mail.body.encoded
     assert_match CGI.escape(user.email), mail.body.encoded

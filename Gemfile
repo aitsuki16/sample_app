@@ -5,6 +5,7 @@ ruby "3.3.5"
 
 # Bundle edge Rails instead: gem "rails", github: "rails/rails", branch: "main"
 gem "rails", "~> 7.0.4"
+gem 'pg', '~> 1.5', group: :production
 gem "bcrypt",          "3.1.18"
 
 # The original asset pipeline for Rails [https://github.com/rails/sprockets-rails]
@@ -22,10 +23,6 @@ gem "bootstrap-will_paginate", "1.0.0"
 # gem 'pg', group: :production
 group :development, :test do
   gem 'sqlite3', '~> 1.4'
-end
-
-group :production do
-  gem 'pg', '~> 1.5'
 end
 
 # Use sqlite3 as the database for Active Record
