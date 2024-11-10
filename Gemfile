@@ -4,7 +4,10 @@ git_source(:github) { |repo| "https://github.com/#{repo}.git" }
 ruby "3.3.5"
 
 gem "rails", "~> 7.0.4"
-gem "pg", "~> 1.5" # Only specify pg once here
+
+group :production do
+  gem 'pg', '~> 1.5'
+end
 gem "bcrypt", "3.1.18"
 gem "sprockets-rails"
 gem "ostruct"
