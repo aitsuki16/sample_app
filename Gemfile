@@ -8,6 +8,7 @@ gem "rails", "~> 7.0.4"
 group :production do
   gem 'pg', '~> 1.5'
 end
+gem 'webrick'
 gem "bcrypt", "3.1.18"
 gem "sprockets-rails"
 gem "ostruct"
