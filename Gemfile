@@ -4,7 +4,6 @@ git_source(:github) { |repo| "https://github.com/#{repo}.git" }
 ruby "3.3.5"
 
 gem "rails", "~> 7.0.4"
-
 group :production do
   gem 'pg', '~> 1.5'
 end
