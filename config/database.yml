@@ -1,4 +1,4 @@
-default: &default
+zdefault: &default
   adapter: postgresql
   encoding: unicode
   pool: <%= ENV.fetch("RAILS_MAX_THREADS") { 5 } %>
@@ -7,15 +7,15 @@ default: &default
 development:
   <<: *default
   database: sample_app_development
-  username: your_username # replace with your local PostgreSQL username
-  password: your_password # replace with your local PostgreSQL password
+  username: your_local_pg_username # replace with your local PostgreSQL username
+  password: your_local_pg_password # replace with your local PostgreSQL password
   host: localhost
 
 test:
   <<: *default
   database: sample_app_test
-  username: your_username # replace with your local PostgreSQL username
-  password: your_password # replace with your local PostgreSQL password
+  username: your_local_pg_username # replace with your local PostgreSQL username
+  password: your_local_pg_password # replace with your local PostgreSQL password
   host: localhost
 
 production:
