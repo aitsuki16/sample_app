@@ -1,21 +1,23 @@
-# Define the default configuration at the top
 default: &default
+  adapter: postgresql
+  encoding: unicode
   pool: <%= ENV.fetch("RAILS_MAX_THREADS") { 5 } %>
   timeout: 5000
 
-# Development environment settings
 development:
   <<: *default
-  adapter: sqlite3
-  database: db/development.sqlite3
+  database: sample_app_development
+  username: your_username # replace with your local PostgreSQL username
+  password: your_password # replace with your local PostgreSQL password
+  host: localhost
 
-# Test environment settings
 test:
   <<: *default
-  adapter: sqlite3
-  database: db/test.sqlite3
+  database: sample_app_test
+  username: your_username # replace with your local PostgreSQL username
+  password: your_password # replace with your local PostgreSQL password
+  host: localhost
 
-# Production environment settings
 production:
   <<: *default
   url: <%= ENV['DATABASE_URL'] %>

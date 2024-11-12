@@ -5,7 +5,7 @@ ruby "3.3.5"
 
 gem "rails", "~> 7.0.4"
 group :production do
-  gem 'pg', '~> 1.5'
+gem 'pg', '~> 1.5'
 end
 gem 'webrick'
 gem "bcrypt", "3.1.18"
@@ -28,10 +28,10 @@ gem "jbuilder"
 gem "tzinfo-data", platforms: %i[mingw mswin x64_mingw jruby]
 gem "bootsnap", require: false
 
-group :development, :test do
-  gem "sqlite3", "~> 1.4"
-  gem "debug", platforms: %i[mri mingw x64_mingw]
-end
+# group :development, :test do
+#   gem "pg", "~> 1.4"
+#   gem "debug", platforms: %i[mri mingw x64_mingw]
+# end
 
 group :development do
   gem "web-console"
