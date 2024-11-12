@@ -1,23 +1,22 @@
-zdefault: &default
+default: &default
   adapter: postgresql
-  encoding: unicode
   pool: <%= ENV.fetch("RAILS_MAX_THREADS") { 5 } %>
   timeout: 5000
 
 development:
   <<: *default
-  database: sample_app_development
-  username: your_local_pg_username # replace with your local PostgreSQL username
-  password: your_local_pg_password # replace with your local PostgreSQL password
-  host: localhost
+  adapter: sqlite3
+  database: db/development.sqlite3
 
+# Warning: The database defined as "test" will be erased and
+# re-generated from your development database when you run "rake".
+# Do not set this db to the same as development or production.
 test:
   <<: *default
-  database: sample_app_test
-  username: your_local_pg_username # replace with your local PostgreSQL username
-  password: your_local_pg_password # replace with your local PostgreSQL password
-  host: localhost
+  database: db/test.sqlite3
 
 production:
   <<: *default
-  url: <%= ENV['DATABASE_URL'] %>
+  database: event_tracker_production
+  username: event_tracker
+  password: <%= ENV['EVENT_TRACKER_DATABASE_PASSWORD'] %>
