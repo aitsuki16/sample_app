@@ -12,7 +12,7 @@ Rails.application.configure do
   config.eager_load = true
 
   # Full error reports are disabled and caching is turned on.
-  config.consider_all_requests_local       = false
+  config.consider_all_requests_local = false
   config.action_controller.perform_caching = true
 
   # Ensure that a master key has been made available.
@@ -50,21 +50,17 @@ Rails.application.configure do
   # config.cache_store = :mem_cache_store
 
   # Use a real queuing backend for Active Job.
-  # config.active_job.queue_adapter     = :resque
+  # config.active_job.queue_adapter = :resque
   # config.active_job.queue_name_prefix = "sample_app_production"
 
   config.action_mailer.perform_caching = false
-
- # config/environments/production.rb
-
-Rails.application.configure do
-  # Other configuration settings...
 
   # Email settings for SendGrid on Render
   config.action_mailer.raise_delivery_errors = true
   config.action_mailer.delivery_method = :smtp
   host = 'sample-app-3bqx.onrender.com' # Your Render app URL
   config.action_mailer.default_url_options = { host: host }
+  config.action_mailer.default_options = { from: '<igaaida16@gmail.com>' } # Your verified sender email
 
   ActionMailer::Base.smtp_settings = {
     address: 'smtp.sendgrid.net',
@@ -76,8 +72,6 @@ Rails.application.configure do
     enable_starttls_auto: true
   }
 
-  # Other configuration settings...
-end
   # Enable locale fallbacks for I18n.
   config.i18n.fallbacks = true
 
