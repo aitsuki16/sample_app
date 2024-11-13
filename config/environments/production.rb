@@ -60,7 +60,7 @@ Rails.application.configure do
   config.action_mailer.delivery_method = :smtp
   host = 'sample-app-3bqx.onrender.com' # Your Render app URL
   config.action_mailer.default_url_options = { host: host }
-  config.action_mailer.default_options = { from: '<igaaida16@gmail.com>' } # Your verified sender email
+  config.action_mailer.default_options = { from: '<aidaiga16@gmail.com>' } # Your verified sender email
 
   ActionMailer::Base.smtp_settings = {
     address: 'smtp.sendgrid.net',
