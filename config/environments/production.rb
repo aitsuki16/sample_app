@@ -21,24 +21,14 @@ Rails.application.configure do
   # Disable serving static files from the `/public` folder by default.
   config.public_file_server.enabled = ENV["RAILS_SERVE_STATIC_FILES"].present?
 
-  # Compress CSS using a preprocessor.
-  # config.assets.css_compressor = :sass
-
   # Do not fallback to assets pipeline if a precompiled asset is missed.
   config.assets.compile = false
 
-  # Enable serving of images, stylesheets, and JavaScripts from an asset server.
-  # config.asset_host = "http://assets.example.com"
-
-  # Specifies the header that your server uses for sending files.
-  # config.action_dispatch.x_sendfile_header = "X-Sendfile" # for Apache
-  # config.action_dispatch.x_sendfile_header = "X-Accel-Redirect" # for NGINX
-
-  # Store uploaded files on the local file system.
+  # Store uploaded files on the local file system (see config/storage.yml for options).
   config.active_storage.service = :local
 
   # Force all access to the app over SSL, use Strict-Transport-Security, and use secure cookies.
-  # config.force_ssl = true
+  config.force_ssl = true
 
   # Set log level to info.
   config.log_level = :info
@@ -49,7 +39,7 @@ Rails.application.configure do
   # Use a different cache store in production.
   # config.cache_store = :mem_cache_store
 
-  # Use a real queuing backend for Active Job.
+  # Use a real queuing backend for Active Job (and separate queues per environment).
   # config.active_job.queue_adapter = :resque
   # config.active_job.queue_name_prefix = "sample_app_production"
 
@@ -59,27 +49,27 @@ Rails.application.configure do
   config.action_mailer.raise_delivery_errors = true
   config.action_mailer.delivery_method = :smtp
   host = 'sample-app-3bqx.onrender.com' # Your Render app URL
-  config.action_mailer.default_url_options = { host: host }
-  config.action_mailer.default_options = { from: '<aidaiga16@gmail.com>' } # Your verified sender email
+  config.action_mailer.default_url_options = { host: host, protocol: 'https' }
+  config.action_mailer.default_options = { from: 'aidaiga16@gmail.com' } # Your verified sender email
 
-
-  ActionMailer::Base.smtp_settings = {
+  # SMTP settings for SendGrid
+  config.action_mailer.smtp_settings = {
     address: 'smtp.sendgrid.net',
-    port: '587',
-    authentication: :plain,
-    user_name: 'apikey', # This is literally "apikey"
-    password: ENV['SENDGRID_API_KEY'], # Environment variable for SendGrid API key
+    port: 587,
     domain: 'sample-app-3bqx.onrender.com', # Your Render app domain
+    authentication: :plain,
+    user_name: 'apikey', # This should literally be 'apikey'
+    password: ENV['SENDGRID_API_KEY'], # Environment variable for SendGrid API key
     enable_starttls_auto: true
   }
 
-  # Enable locale fallbacks for I18n.
+  # Enable locale fallbacks for I18n (makes lookups for any locale fall back to I18n.default_locale when a translation cannot be found).
   config.i18n.fallbacks = true
 
-  # Do not log deprecations.
+  # Don't log any deprecations.
   config.active_support.report_deprecations = false
 
-  # Use default logging formatter.
+  # Use default logging formatter so that PID and timestamp are not suppressed.
   config.log_formatter = ::Logger::Formatter.new
 
   # Log to STDOUT if specified.

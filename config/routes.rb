@@ -1,5 +1,8 @@
 Rails.application.routes.draw do
-  # Root route (homepage)
+  get 'password_resets/new'
+  get 'password_resets/edit'
+  get 'sessions/new'
+  
   root "static_pages#home"
 
   # Static pages routes
@@ -10,14 +13,12 @@ Rails.application.routes.draw do
   # Signup, login, and logout routes
   get "/signup", to: "users#new", as: "signup"
   get "/login",   to: "sessions#new"
-  post "/login",  to: "sessions#create"
-  delete "/logout", to: "sessions#destroy"
+  post "/login",   to: "sessions#create"
+  delete "/logout",  to: "sessions#destroy"
 
-  # User resource routes
-  resources :users, only: [:new, :create, :show, :edit, :update]
+  # User resource routes including the index action
+  resources :users, only: [:index, :new, :create, :show, :edit, :update]
 
-
-  # Account activation and password reset routes
   resources :account_activations, only: [:edit]
   resources :password_resets,     only: [:new, :create, :edit, :update]
 end
