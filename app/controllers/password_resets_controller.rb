@@ -1,8 +1,7 @@
 class PasswordResetsController < ApplicationController
-  
   before_action :get_user,         only: [:edit, :update]
   before_action :valid_user,       only: [:edit, :update]
-  before_action :check_expiration, only: [:edit, :update]    # Case 1
+  before_action :check_expiration, only: [:edit, :update]    # Checks if token is expired
 
   def new
   end
@@ -24,16 +23,16 @@ class PasswordResetsController < ApplicationController
   end
 
   def update
-    if params[:user][:password].empty?                  # Case 3
+    if params[:user][:password].empty?                  # Case 3: Password is empty
       @user.errors.add(:password, "can't be empty")
       render 'edit', status: :unprocessable_entity
-    elsif @user.update(user_params)                     # Case 4
+    elsif @user.update(user_params)                     # Case 4: Password update succeeds
       reset_session
       log_in @user
       flash[:success] = "Password has been reset."
-      redirect_to @user
+      redirect_to @user                                # Redirect to the user's profile page
     else
-      render 'edit', status: :unprocessable_entity      # Case 2
+      render 'edit', status: :unprocessable_entity      # Case 2: Password update fails
     end
   end
 
