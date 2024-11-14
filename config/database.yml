@@ -6,13 +6,18 @@ default: &default
 
 development:
   <<: *default
-  adapter: sqlite3
-  database: db/development.sqlite3
+  database: sample_app_development
+  username: <your_database_user>
+  password: <your_database_password>
+  host: localhost # Use 'localhost' or the appropriate host for your setup
 
 test:
   <<: *default
-  database: db/test.sqlite3
+  database: sample_app_test
+  username: <your_database_user>
+  password: <your_database_password>
+  host: localhost
 
 production:
   <<: *default
-  url: <%= ENV['DATABASE_URL'] %>
+  url: <%= ENV['DATABASE_URL'] %> # For Render

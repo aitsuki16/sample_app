@@ -30,6 +30,9 @@ group :development do
   gem "web-console"
 end
 
+group :development, :test do
+  gem 'sqlite3', '~> 1.4'
+end
 group :test do
   gem "capybara"
   gem "selenium-webdriver"
