@@ -4,10 +4,18 @@
 # </li>
 
 
+# <li id="micropost-<%= micropost.id %>">
+#   <strong><%= micropost.user.name %>:</strong>
+#   <%= micropost.content %>
+#   <%= button_to "Delete", micropost, method: :delete,
+#                 data: { turbo_confirm: "Are you sure?" },
+#                 class: "btn btn-danger btn-sm" %>
+# </li>
+
+
+<!-- app/views/microposts/_micropost.html.erb -->
 <li id="micropost-<%= micropost.id %>">
   <strong><%= micropost.user.name %>:</strong>
   <%= micropost.content %>
-  <%= button_to "Delete", micropost, method: :delete,
-                data: { turbo_confirm: "Are you sure?" },
-                class: "btn btn-danger btn-sm" %>
+  <%= link_to "Delete", micropost, method: :delete, data: { turbo_method: :delete }, class: "btn btn-danger" %>
 </li>
