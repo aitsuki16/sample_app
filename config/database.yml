@@ -12,8 +12,6 @@ development:
 test:
   <<: *default
   database: sample_app_test
-  username: <your_database_user>
-  password: <your_database_password>
   host: localhost
 
 production:
