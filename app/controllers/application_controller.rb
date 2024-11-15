@@ -1,14 +1,18 @@
 class ApplicationController < ActionController::Base
     include SessionsHelper
 
-    def hello
-        render html: "hello, world!"
-    end
-
-    private
-
-    # Stores the URL trying to be accessed for friendly forwarding
-    def store_location
-      session[:forwarding_url] = request.original_url if request.get?
-    end
-end
+    class ApplicationController < ActionController::Base
+        include SessionsHelper
+      
+        private
+      
+          # Confirms a logged-in user.
+          def logged_in_user
+            unless logged_in?
+              store_location
+              flash[:danger] = "Please log in."
+              redirect_to login_url, status: :see_other
+            end
+          end
+      end
+      
