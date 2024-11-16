@@ -36,6 +36,7 @@ Rails.application.configure do
   config.log_level = :info
 #aws
   config.active_storage.service = :amazon
+  
   # Prepend all log lines with the following tags.
   config.log_tags = [ :request_id ]
 
