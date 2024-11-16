@@ -3,6 +3,8 @@
 require "active_support/core_ext/integer/time"
 
 Rails.application.configure do
+
+
   # Settings specified here will take precedence over those in config/application.rb.
 
   # Code is not reloaded between requests.
@@ -32,7 +34,8 @@ Rails.application.configure do
 
   # Set log level to info.
   config.log_level = :info
-
+#aws
+  config.active_storage.service = :amazon
   # Prepend all log lines with the following tags.
   config.log_tags = [ :request_id ]
 

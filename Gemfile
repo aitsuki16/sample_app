@@ -27,6 +27,7 @@ gem "tzinfo-data", platforms: %i[mingw mswin x64_mingw jruby]
 gem "bootsnap", require: false
 gem "active_storage_validations", "0.9.8"
 gem "image_processing",           "1.12.2"
+gem "aws-sdk-s3", "1.114.0", require: false
 
 group :development do
   gem "web-console"
