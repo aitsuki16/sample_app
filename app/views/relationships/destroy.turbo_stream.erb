@@ -6,3 +6,17 @@
 #   <% end %>
 <%= turbo_stream.replace "follow_form", partial: "users/unfollow", locals: { user: @user } %>
 <%= turbo_stream.replace "followers", partial: "shared/followers_count", locals: { user: @user } %>
+# <%= turbo_stream.replace "follow_form", partial: "users/unfollow", locals: { user: @user } %>
+# <%= turbo_stream.replace "followers", partial: "shared/followers_count", locals: { user: @user } %>
+
+<%= turbo_stream.replace "followers" do %>
+  <strong id="followers" class="stat">
+    <%= @user.followers.count %>
+  </strong>
+<% end %>
+<%= turbo_stream.replace "following" do %>
+  <strong id="following" class="stat">
+    <%= @user.following.count %>
+  </strong>
+<% end %>
+<%= turbo_stream.replace "follow_form", partial: "users/follow", locals: { user: @user } %>
