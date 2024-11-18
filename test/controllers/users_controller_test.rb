@@ -31,7 +31,6 @@ class UsersControllerTest < ActionDispatch::IntegrationTest
     assert_redirected_to root_url
   end
 
-  # Test to ensure the admin attribute can't be modified via the web
   test "should not allow the admin attribute to be edited via the web" do
     log_in_as(@other_user)
     assert_not @other_user.admin?
@@ -58,5 +57,16 @@ class UsersControllerTest < ActionDispatch::IntegrationTest
     end
     assert_response :see_other
     assert_redirected_to root_url
+  end
+
+  # New tests for following and followers pages
+  test "should redirect following when not logged in" do
+    get following_user_path(@user)
+    assert_redirected_to login_url
+  end
+
+  test "should redirect followers when not logged in" do
+    get followers_user_path(@user)
+    assert_redirected_to login_url
   end
 end
