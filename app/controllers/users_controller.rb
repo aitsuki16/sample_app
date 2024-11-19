@@ -143,7 +143,8 @@ class UsersController < ApplicationController
   def show
     @microposts = @user.microposts.paginate(page: params[:page])
     # Uncomment the next line to redirect inactive users:
-    # redirect_to root_url and return unless @user.activated?
+    #redirect
+    redirect_to root_url and return unless @user.activated?
   end
 
   # Sign-up form
