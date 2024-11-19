@@ -1,25 +1,40 @@
-<% provide(:title, @user.name) %>
-<div class="row">
-  <aside class="col-md-4">
-    <section class="user_info">
-      <h1>
-        <%= gravatar_for @user %>
-        <%= @user.name %>
-      </h1>
-    </section>
-    <section class="stats">
-    <%= render 'shared/stats' %>
-  </section>
-  </aside>
+# <% provide(:title, @user.name) %>
+# <div class="row">
+#   <aside class="col-md-4">
+#     <section>
+#       <h1>
+#         <%= gravatar_for @user %>
+#         <%= @user.name %>
+#       </h1>
+#     </section>
+#     <section class="stats">
+#       <%= render 'shared/stats' %>
+#     </section>
+#   </aside>
+#   <div class="col-md-8">
+#     <%= render 'follow_form' if logged_in? %>
+#     <% if @user.microposts.any? %>
+#       <h3>Microposts (<%= @user.microposts.count %>)</h3>
+#       <ol class="microposts">
+#         <%= render @microposts %>
+#       </ol>
+#       <%= will_paginate @microposts %>
+#     <% end %>
+#   </div>
+# </div>
 
-  <div class="col-md-8">
-  <%= render 'follow_form' if logged_in? %>
-  <% if @user.microposts.any? %>
-    <h3>Microposts (<%= @user.microposts.count %>)</h3>
-    <ol class="microposts">
-      <%= render @microposts %>
-    </ol>
-    <%= will_paginate @microposts %>
-  <% end %>
-  </div>
+<% provide(:title, @user.name) %>
+<h1><%= @user.name %></h1>
+<div class="gravatar">
+  <%= gravatar_for @user %>
 </div>
+<%= turbo_frame_tag dom_id(@user, :follow) do %>
+  <% if current_user.following?(@user) %>
+    <%= render 'unfollow' %>
+  <% else %>
+    <%= render 'follow' %>
+  <% end %>
+<% end %>
+
+<h3>Microposts (<%= @user.microposts.count %>)</h3>
+<%= render @microposts %>
