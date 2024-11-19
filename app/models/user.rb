@@ -47,12 +47,19 @@ class User < ApplicationRecord
   end
 
   # Feed for user's posts and followed users' posts
+  # def feed
+  #   following_ids = "SELECT followed_id FROM relationships WHERE follower_id = :user_id"
+  #   Micropost.where("user_id IN (#{following_ids}) OR user_id = :user_id", user_id: id)
+  #            .includes(:user, image_attachment: :blob)
+  # end
+
   def feed
-    following_ids = "SELECT followed_id FROM relationships WHERE follower_id = :user_id"
-    Micropost.where("user_id IN (#{following_ids}) OR user_id = :user_id", user_id: id)
+    part_of_feed = "relationships.follower_id = :id or microposts.user_id = :id"
+    Micropost.left_outer_joins(user: :followers)
+             .where(part_of_feed, { id: id }).distinct
              .includes(:user, image_attachment: :blob)
   end
-
+  
   # Follows a user unless the relationship already exists
   def follow(other_user)
     following << other_user unless self == other_user || following?(other_user)
