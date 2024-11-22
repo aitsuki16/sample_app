@@ -22,19 +22,3 @@
     <% end %>
   </div>
 </div>
-
-# <% provide(:title, @user.name) %>
-# <h1><%= @user.name %></h1>
-# <div class="gravatar">
-#   <%= gravatar_for @user %>
-# </div>
-# <%= turbo_frame_tag dom_id(@user, :follow) do %>
-#   <% if current_user.following?(@user) %>
-#     <%= render 'unfollow' %>
-#   <% else %>
-#     <%= render 'follow' %>
-#   <% end %>
-# <% end %>
-
-# <h3>Microposts (<%= @user.microposts.count %>)</h3>
-# <%= render @microposts %>
