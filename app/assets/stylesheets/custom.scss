@@ -310,25 +310,24 @@
 
 
 
-@import "bootstrap-sprockets";
+/* Import Bootstrap */
 @import "bootstrap";
 
-/* mixins, variables, etc. */
+/* Variables */
 $gray-medium-light: #eaeaea;
+$gray-light: #f8f9fa;
+$gray-darker: #343a40;
 
+/* Mixins */
 @mixin box-sizing {
   box-sizing: border-box;
   -moz-box-sizing: border-box;
   -webkit-box-sizing: border-box;
 }
 
-/* universal */
+/* Universal */
 body {
   padding-top: 60px;
-}
-
-section {
-  overflow: auto;
 }
 
 textarea {
@@ -342,7 +341,7 @@ textarea {
   }
 }
 
-/* typography */
+/* Typography */
 h1, h2, h3, h4, h5, h6 {
   line-height: 1;
 }
@@ -350,17 +349,17 @@ h1, h2, h3, h4, h5, h6 {
 h1 {
   font-size: 3em;
   letter-spacing: -2px;
-  margin-bottom: 30px;
   text-align: center;
+  margin-bottom: 30px;
 }
 
 h2 {
   font-size: 1.2em;
   letter-spacing: -1px;
-  margin-bottom: 30px;
   text-align: center;
+  margin-bottom: 30px;
   font-weight: normal;
-  color: $gray-medium-light;
+  color: $gray-light;
 }
 
 p {
@@ -368,7 +367,7 @@ p {
   line-height: 1.7em;
 }
 
-/* header */
+/* Header */
 #logo {
   float: left;
   margin-right: 10px;
@@ -379,89 +378,36 @@ p {
   padding-top: 9px;
   font-weight: bold;
   &:hover {
-    color: white;
     text-decoration: none;
+    color: white;
   }
 }
 
-/* footer */
+/* Footer */
 footer {
   margin-top: 45px;
-  padding-top: 5px;
   border-top: 1px solid $gray-medium-light;
-  color: $gray-medium-light;
-
-  a {
-    color: $gray-medium-light;
-    &:hover {
-      color: darken($gray-medium-light, 15%);
+  color: $gray-light;
+  ul {
+    list-style: none;
+    float: right;
+    li {
+      float: left;
+      margin-left: 20px;
     }
   }
-
   small {
     float: left;
   }
-
-  ul {
-    float: right;
-    list-style: none;
-
-    li {
-      float: left;
-      margin-left: 15px;
+  a {
+    color: $gray;
+    &:hover {
+      color: $gray-darker;
     }
   }
 }
 
-.debug_dump {
-  clear: both;
-  float: left;
-  width: 100%;
-  margin-top: 45px;
-}
-
-aside {
-  section {
-    padding: 10px 0;
-    margin-top: 20px;
-
-    &:first-child {
-      border: 0;
-      padding-top: 0;
-    }
-
-    span {
-      display: block;
-      margin-bottom: 3px;
-      line-height: 1;
-    }
-
-    h1 {
-      font-size: 1.4em;
-      text-align: left;
-      letter-spacing: -1px;
-      margin: 0 0 3px;
-    }
-
-    &.user_info {
-      margin-top: 20px;
-    }
-  }
-}
-
-/* gravatar styling */
-.gravatar {
-  width: 50px;
-  height: 50px;
-  margin-right: 10px;
-
-  img {
-    width: 100%;
-    height: auto;
-    border-radius: 50%;
-  }
-}
-
+/* Users List */
 .users {
   display: flex;
   flex-direction: column;
@@ -473,33 +419,48 @@ aside {
   li {
     display: flex;
     align-items: center;
+    justify-content: space-between;
     padding: 10px 0;
     border-bottom: 1px solid $gray-medium-light;
   }
+}
 
-  &.follow {
-    padding: 0;
+/* Gravatar */
+.gravatar {
+  width: 50px;
+  height: 50px;
+  margin-right: 10px;
+  float: left;
+  img {
+    width: 100%;
+    height: auto;
+    border-radius: 50%;
   }
 }
 
-.user_avatars {
+/* Stats */
+.stats {
   overflow: auto;
-  margin-top: 10px;
-
-  .gravatar {
-    margin: 1px;
-  }
-
   a {
-    padding: 0;
+    float: left;
+    padding: 0 10px;
+    border-left: 1px solid $gray-medium-light;
+    color: gray;
+    &:first-child {
+      padding-left: 0;
+      border: 0;
+    }
+    &:hover {
+      text-decoration: none;
+      color: blue;
+    }
+  }
+  strong {
+    display: block;
   }
 }
 
-.user-name {
-  font-size: 1em;
-  color: #333;
-}
-
+/* Forms */
 input, textarea, select, .uneditable-input {
   border: 1px solid #bbb;
   width: 100%;
@@ -511,9 +472,16 @@ input {
   height: auto !important;
 }
 
+.checkbox {
+  margin: 10px 0;
+  span {
+    margin-left: 20px;
+    font-weight: normal;
+  }
+}
+
 #error_explanation {
   color: red;
-
   ul {
     margin: 0 0 30px;
     color: red;
@@ -522,44 +490,35 @@ input {
 
 .field_with_errors {
   @extend .has-error;
-
   .form-control {
     color: $state-danger-text;
   }
 }
 
-.checkbox {
-  margin: 10px 0;
-
-  span {
-    margin-left: 20px;
-    font-weight: normal;
-  }
+/* Dropdown */
+.dropdown-menu.active {
+  display: block;
 }
 
+/* Microposts */
 .microposts {
   list-style: none;
   padding: 0;
-
   li {
     padding: 10px 0;
     border-top: 1px solid #e8e8e8;
   }
-
   .content {
     margin-left: 60px;
-
     img {
-      padding: 5px 0;
       display: block;
+      padding: 5px 0;
     }
   }
-
   .timestamp {
     margin-left: 60px;
-    color: $gray-medium-light;
+    color: $gray-light;
   }
-
   .gravatar {
     float: left;
     margin-right: 10px;
@@ -569,8 +528,61 @@ input {
 
 span.image {
   margin-top: 10px;
-
   input {
     border: 0;
   }
+}
+
+/* Aside Section */
+aside {
+  section {
+    padding: 10px 0;
+    margin-top: 20px;
+    &:first-child {
+      border: 0;
+      padding-top: 0;
+    }
+    span {
+      display: block;
+      margin-bottom: 3px;
+      line-height: 1;
+    }
+    h1 {
+      font-size: 1.4em;
+      letter-spacing: -1px;
+      margin: 0 0 3px;
+    }
+  }
+  textarea {
+    height: 100px;
+    margin-bottom: 5px;
+  }
+}
+
+/* User Avatars */
+.user_avatars {
+  overflow: auto;
+  margin-top: 10px;
+  .gravatar {
+    margin: 1px;
+  }
+  a {
+    padding: 0;
+  }
+}
+
+.users.follow {
+  padding: 0;
+}
+
+.user-name {
+  font-size: 1em;
+  color: #333;
+}
+
+.debug_dump {
+  clear: both;
+  float: left;
+  width: 100%;
+  margin-top: 45px;
 }
