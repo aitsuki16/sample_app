@@ -21,8 +21,7 @@ Rails.application.routes.draw do
 
 
 #this
-  if Rails.env.production?
     get '/seed_relationships', to: 'users#seed_relationships'
-  end
+ 
 
 end
