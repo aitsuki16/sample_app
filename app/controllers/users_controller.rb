@@ -105,11 +105,6 @@ class UsersController < ApplicationController
   end
 
 
-
-
-
-
-
 #this
   def seed_relationships
     # Create test users
