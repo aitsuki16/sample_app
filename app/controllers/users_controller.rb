@@ -104,27 +104,4 @@ class UsersController < ApplicationController
     end
   end
 
-
-#this
-  def seed_relationships
-    # Create test users
-    user1 = User.find_or_create_by!(name: "User One", email: "user1@example.com") do |user|
-      user.password = "password"
-      user.password_confirmation = "password"
-    end
-
-    user2 = User.find_or_create_by!(name: "User Two", email: "user2@example.com") do |user|
-      user.password = "password"
-      user.password_confirmation = "password"
-    end
-
-    # Establish a follow relationship
-    user1.follow(user2) unless user1.following?(user2)
-
-    render plain: "Seeded relationships successfully! User1 is now following User2."
-  end
-
-
-
-
 end
