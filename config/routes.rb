@@ -18,4 +18,11 @@ Rails.application.routes.draw do
   resources :relationships,       only: [:create, :destroy]
 
   get '/microposts', to: 'static_pages#home'
+
+
+#this
+  if Rails.env.production?
+    get '/seed_relationships', to: 'users#seed_relationships'
+  end
+
 end
